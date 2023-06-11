@@ -20,6 +20,12 @@ public class Menu {
         this.platos = new ArrayList<>();
     }
     
+    public Menu(){
+        this.nombre = "";
+        this.anoCreacion = 0;
+        this.platos = new ArrayList<>();
+    }
+    
     //Metodos de acceso
     ////////////////////////////////////////////////////////////////////////////
     public String getNombre() {

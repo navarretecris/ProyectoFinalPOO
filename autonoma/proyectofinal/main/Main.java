@@ -5,32 +5,33 @@ import autonoma.proyectofinal.models.Menu;
 import autonoma.proyectofinal.models.Plato;
 import autonoma.proyectofinal.models.PlatoInternacional;
 import autonoma.proyectofinal.models.PlatoNacional;
+import autonoma.proyectofinal.models.Restaurante;
 import autonoma.proyectofinal.models.Venta;
 
 
 public class Main {
     public static void main(String[] args){
         
+        Restaurante restaurante = new Restaurante("El buen sabor", "Calle 223", 895389);
+        
+        
         Plato p1 = new PlatoNacional("ajiaco", 20000, "mera papa");
         Plato p2 = new PlatoInternacional("ceviche Peruano", 45000, "Pescado","Peru");
-    
-        /*Menu menu = new Menu("Menu Viernes", 2002);
-    
-        menu.agregarPlato(p1);
-        menu.agregarPlato(p2);
-        System.out.println(menu.mostrarMenu());*/
-
-        Venta venta = new Venta();
+       
+        //restaurante.agregarPlato(p1);
+        //System.out.println(restaurante.mostrarMenu());
         
-        Venta v2 = new Venta();
-    
-        venta.agregarPlato(p1);
-        venta.agregarPlato(p2);
-        System.out.println(venta.mostrarVenta());
+        //restaurante.agregarPlato(p2);
+        //System.out.println(restaurante.mostrarMenu());
         
-        v2.agregarPlato(p2);
-        v2.agregarPlato(p2);
-        System.out.println(v2.mostrarVenta());
+        
+        restaurante.agregarPlatoVendido(p1);
+        restaurante.agregarPlatoVendido(p2);
+        restaurante.agregarPlatoVendido(p2);
+        System.out.println(restaurante.mostrarVenta());
+       
+        
+        
     }
     
 }
