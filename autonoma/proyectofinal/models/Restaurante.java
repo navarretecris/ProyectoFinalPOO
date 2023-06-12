@@ -118,6 +118,13 @@ public class Restaurante {
         return this.venta.mostrarPlatosVendidos();
     }
     
+    public void agregarPlatosVendidos(Venta venta, ArrayList<Plato> platosVendidos) {
+        for (Plato plato : platosVendidos) {
+            venta.agregarPlato(plato);
+        }
+    }
+
+    
     public boolean agregarVenta(Venta venta){
         return this.ventas.add(venta);
     }

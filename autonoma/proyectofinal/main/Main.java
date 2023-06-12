@@ -9,23 +9,34 @@ import autonoma.proyectofinal.models.PlatoInternacional;
 import autonoma.proyectofinal.models.PlatoNacional;
 import autonoma.proyectofinal.models.Restaurante;
 import autonoma.proyectofinal.models.Venta;
+import autonoma.proyectofinal.views.VentanaPrincipal;
+import java.util.ArrayList;
 
 
 public class Main {
     public static void main(String[] args){
-        Restaurante restaurante = new Restaurante("El buen sabor", "Calle 223", 895389);
+        
+        VentanaPrincipal ventana = new VentanaPrincipal();
+        ventana.setVisible(true);
         
         
-        Plato p1 = new PlatoNacional("ajiaco", 20000, "mera papa");
-        Plato p2 = new PlatoInternacional("ceviche Peruano", 45000, "Pescado","Peru");
-        
-        Venta v = new Venta();
-        
-        restaurante.agregarPlatoVendido(p2);
-        
-        restaurante.agregarVenta(v);
-        
-        System.out.println(restaurante.mostrarVenta());
+//        Restaurante restaurante = new Restaurante("El Buen Sabor", "Calle Elm", 8901431);
+//        Venta venta = new Venta();
+//        
+//        Plato p1 = new PlatoNacional("ajiaco", 20000, "mera papa");
+//        Plato p2 = new PlatoInternacional("ceviche Peruano", 45000, "Pescado","Peru");
+//
+//        ArrayList<Plato> platosVendidos = new ArrayList<>();
+//        
+//        restaurante.agregarPlatoVendido(p1);
+//        restaurante.agregarPlatoVendido(p2);
+//        
+//        restaurante.agregarPlatosVendidos(venta, platosVendidos);
+//        
+//        restaurante.agregarVenta(venta);
+//        
+//        System.out.println(restaurante.mostrarVenta());
+    
  
         
     }
