@@ -12,7 +12,6 @@ public class Restaurante {
     private long telefono;
     private Menu menu;
     private Venta venta;
-    private Empleado empleado;
     //private Administrador administrador;
     private ArrayList<Venta> ventas;
     private ArrayList<Empleado> empleados;
@@ -27,7 +26,6 @@ public class Restaurante {
         this.telefono = telefono;
         this.menu = new Menu();
         this.venta = new Venta();
-        //this.empleado = new Empleado();
         //this.administrador = new Administrador();
         this.ventas = new ArrayList<>();
         this.empleados = new ArrayList<>();
@@ -116,37 +114,152 @@ public class Restaurante {
         return this.venta.obtenerPlatosVendidos();
     }
     
-    public String generarVenta(){
-        return this.venta.generarVenta();
+    public String mostrarPlatosVendidos(){
+        return this.venta.mostrarPlatosVendidos();
     }
     
-    //Metodos Gestion Ventas
+    public boolean agregarVenta(Venta venta){
+        return this.ventas.add(venta);
+    }
+    
+    public Venta buscarVenta(int codigo){
+        for (int i = 0; i < this.ventas.size(); i++){
+            Venta v = this.ventas.get(i);
+            if(codigo == v.getCodigo()){
+                return v;
+            }
+        }
+        return null;
+    }
+    
+    public boolean actualizarVenta(int codigo, Venta venta){
+        int index = -1;
+        
+        for (int i = 0; i < this.ventas.size(); i++){
+            if(codigo == this.ventas.get(i).getCodigo()){
+                index = i;
+            }
+        }
+        
+        if(index>=0){
+            this.ventas.set(index, venta);
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
+    public boolean eliminarVenta(int codigo){
+        int index = -1;
+        
+        for (int i = 0; i < this.ventas.size(); i++){
+            if(codigo == this.ventas.get(i).getCodigo()){
+                index = i;
+            }
+        }
+        
+        if(index>=0){
+            this.ventas.remove(index);
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
+    public ArrayList<Venta> obtenerVentas(){
+       return this.ventas;
+    }
+    
+    public String mostrarVenta(){
+        String venta = "";
+        for(int i = 0; i < this.ventas.size(); i++){
+            Venta v = this.ventas.get(i);
+            venta += "----------------------------\n";
+            venta += v.toString();
+        }
+        return venta;
+        
+    }
+    
+    
+    
+    
+    //Metodos Gestion Empleados
     public boolean agregarEmpleado(Empleado empleado){
-        return this.empleado.agregarEmpleado(empleado);
+        return this.empleados.add(empleado);
     }
     
-    public Empleado buscarEmpleado(long documentoIdentidad){   
-        return this.empleado.buscarEmpleado(documentoIdentidad);
+    public Empleado buscarEmpleado(long documentoIdentidad){
+        for (int i = 0; i < this.empleados.size(); i++){
+            Empleado e = this.empleados.get(i);
+            if(documentoIdentidad == e.getDocumentoIdentidad()){
+                return e;
+            }
+        }
+        return null;
     }
     
-    public Empleado buscarEmpleado(String nombre){   
-        return this.empleado.buscarEmpleado(nombre);
+    public Empleado buscarEmpleado(String nombre){
+        for (int i = 0; i < this.empleados.size(); i++){
+            Empleado e = this.empleados.get(i);
+            if(e.getNombre().equals(nombre)){
+                return e;
+            }
+        }
+        return null;
     }
     
-    public boolean actualizarEmpleado(long docuementoIdentidad, Empleado empleado){
-        return this.empleado.actualizarEmpleado(docuementoIdentidad, empleado);
+    public boolean actualizarEmpleado(long documentoIdentidad, Empleado empleado){
+        int index = -1;
+        
+        for (int i = 0; i < this.empleados.size(); i++){
+            if(documentoIdentidad == this.empleados.get(i).getDocumentoIdentidad()){
+                index = i;
+            }
+        }
+        
+        if(index>=0){
+            this.empleados.set(index, empleado);
+            return true;
+        }
+        else{
+            return false;
+        }
     }
     
     public boolean eliminarEmpleado(long documentoIdentidad){
-        return this.empleado.eliminarEmpleado(documentoIdentidad);
+        int index = -1;
+        
+        for (int i = 0; i < this.empleados.size(); i++){
+            if(documentoIdentidad == this.empleados.get(i).getDocumentoIdentidad()){
+                index = i;
+            }
+        }
+        
+        if(index>=0){
+            this.empleados.remove(index);
+            return true;
+        }
+        else{
+            return false;
+        }
     }
     
     public ArrayList<Empleado> obtenerEmpleados(){
-        return this.empleado.obtenerEmpleados();
-    }
+       return this.empleados;
+   }
     
     public String mostrarEmpleado(){
-        return this.empleado.mostrarEmpleado();
+        String empleado = "";
+        for(int i = 0; i < this.empleados.size(); i++){
+            Empleado e = this.empleados.get(i);
+            empleado += "----------------------------\n";
+            empleado += e.toString();
+        }
+        return empleado;
+        
     }
     
 }

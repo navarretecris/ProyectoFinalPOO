@@ -25,8 +25,18 @@ public class Venta {
         contadorVentas++;
     }
     
+    
+
     //Metodos de acceso
     ////////////////////////////////////////////////////////////////////////////
+    public int getCodigo() {
+        return codigo;
+    }
+    
+    public void setCodigo(int codigo) {    
+        this.codigo = codigo;
+    }
+
     public double getValorTotal() {
         return valorTotal;
     }
@@ -49,6 +59,16 @@ public class Venta {
 
     public void setFecha(Date fecha) {
         this.fecha = fecha;
+    }
+    
+    ////////////////////////////////////////////////////////////////////////////
+     @Override
+    public String toString() {
+        return "CODIGO "+this.codigo+":\n"+
+               "FECHA: "+this.fecha+"\n"+
+               "VALOR TOTAL: "+this.valorTotal+"\n"+
+               "VALOR GANACIA: "+this.valorGanancia+"\n"+
+               "PLATOS VENDIDOS: "+this.mostrarPlatosVendidos()+"\n\n";
     }
     
     
@@ -134,19 +154,14 @@ public class Venta {
         return valorGanancia;
     }
     
-    
-    public String generarVenta(){
-        String venta = "";
-        venta += "Codigo Venta: " + this.codigo + "\n";
-        venta += "Fecha: " + this.fecha + "\n";
-        venta += "Valor Total: " + this.calcularValorTotal() + "\n";
-        venta += "Valor Ganancia: " + this.calcularValorGanancia() + "\n";
+    public String mostrarPlatosVendidos(){
+        String platosVendidos = "";
         for(int i = 0; i < this.platosVendidos.size(); i++){
             Plato p = this.platosVendidos.get(i);
-            venta += "----------------------------\n";
-            venta += p.toString();
+            platosVendidos += "----------------------------\n";
+            platosVendidos += p.toString();
         }
-        return venta;
+        return platosVendidos;
         
     }
     
