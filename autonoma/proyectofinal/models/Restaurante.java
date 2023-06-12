@@ -12,6 +12,7 @@ public class Restaurante {
     private long telefono;
     private Menu menu;
     private Venta venta;
+    private Empleado empleado;
     //private Administrador administrador;
     private ArrayList<Venta> ventas;
     private ArrayList<Empleado> empleados;
@@ -26,6 +27,7 @@ public class Restaurante {
         this.telefono = telefono;
         this.menu = new Menu();
         this.venta = new Venta();
+        //this.empleado = new Empleado();
         //this.administrador = new Administrador();
         this.ventas = new ArrayList<>();
         this.empleados = new ArrayList<>();
@@ -60,23 +62,24 @@ public class Restaurante {
     
     //Metodos
     ////////////////////////////////////////////////////////////////////////////
-    public boolean agregarPlato(Plato plato){
+    //Metodos Gestion Menu
+    public boolean agregarPlatoAlMenu(Plato plato){
         return this.menu.agregarPlato(plato);
     }
     
-    public Plato buscarPlato(long id){   
+    public Plato buscarPlatoEnMenu(long id){   
         return this.menu.buscarPlato(id);
     }
     
-    public Plato buscarPlato(String nombre){   
+    public Plato buscarPlatoEnMenu(String nombre){   
         return this.menu.buscarPlato(nombre);
     }
     
-    public boolean actualizarPlato(long id, Plato plato){
+    public boolean actualizarPlatoEnMenu(long id, Plato plato){
         return this.menu.actualizarPlato(id, plato);
     }
     
-    public boolean eliminarPlato(long id){
+    public boolean eliminarPlatoDelMenu(long id){
         return this.menu.eliminarPlato(id);
     }
     
@@ -88,6 +91,7 @@ public class Restaurante {
         return this.menu.mostrarMenu();
     }
     
+    //Metodos Gestion Ventas    
     public boolean agregarPlatoVendido(Plato plato){
         return this.venta.agregarPlato(plato);
     }
@@ -112,8 +116,37 @@ public class Restaurante {
         return this.venta.obtenerPlatosVendidos();
     }
     
-    public String mostrarVenta(){
-        return this.venta.mostrarVenta();
+    public String generarVenta(){
+        return this.venta.generarVenta();
+    }
+    
+    //Metodos Gestion Ventas
+    public boolean agregarEmpleado(Empleado empleado){
+        return this.empleado.agregarEmpleado(empleado);
+    }
+    
+    public Empleado buscarEmpleado(long documentoIdentidad){   
+        return this.empleado.buscarEmpleado(documentoIdentidad);
+    }
+    
+    public Empleado buscarEmpleado(String nombre){   
+        return this.empleado.buscarEmpleado(nombre);
+    }
+    
+    public boolean actualizarEmpleado(long docuementoIdentidad, Empleado empleado){
+        return this.empleado.actualizarEmpleado(docuementoIdentidad, empleado);
+    }
+    
+    public boolean eliminarEmpleado(long documentoIdentidad){
+        return this.empleado.eliminarEmpleado(documentoIdentidad);
+    }
+    
+    public ArrayList<Empleado> obtenerEmpleados(){
+        return this.empleado.obtenerEmpleados();
+    }
+    
+    public String mostrarEmpleado(){
+        return this.empleado.mostrarEmpleado();
     }
     
 }

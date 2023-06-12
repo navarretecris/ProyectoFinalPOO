@@ -14,14 +14,14 @@ public class Venta {
     private double valorTotal;
     private double valorGanancia;
     private Date fecha;
-    private ArrayList<Plato> platos;
+    private ArrayList<Plato> platosVendidos;
     
     //Constructor
     ////////////////////////////////////////////////////////////////////////////
     public Venta() {
         this.codigo = contadorVentas;
         this.fecha = new Date();
-        this.platos = new ArrayList<>();
+        this.platosVendidos = new ArrayList<>();
         contadorVentas++;
     }
     
@@ -55,12 +55,12 @@ public class Venta {
     //Metodos
     ////////////////////////////////////////////////////////////////////////////
      public boolean agregarPlato(Plato plato){
-        return this.platos.add(plato);
+        return this.platosVendidos.add(plato);
     }
     
     public Plato buscarPlato(long id){
-        for (int i = 0; i < this.platos.size(); i++){
-            Plato p = this.platos.get(i);
+        for (int i = 0; i < this.platosVendidos.size(); i++){
+            Plato p = this.platosVendidos.get(i);
             if(id == p.getId()){
                 return p;
             }
@@ -69,8 +69,8 @@ public class Venta {
     }
     
     public Plato buscarPlato(String nombre){
-        for (int i = 0; i < this.platos.size(); i++){
-            Plato p = this.platos.get(i);
+        for (int i = 0; i < this.platosVendidos.size(); i++){
+            Plato p = this.platosVendidos.get(i);
             if(p.getNombre().equals(nombre)){
                 return p;
             }
@@ -81,14 +81,14 @@ public class Venta {
     public boolean actualizarPlato(long id, Plato plato){
         int index = -1;
         
-        for (int i = 0; i < this.platos.size(); i++){
-            if(id == this.platos.get(i).getId()){
+        for (int i = 0; i < this.platosVendidos.size(); i++){
+            if(id == this.platosVendidos.get(i).getId()){
                 index = i;
             }
         }
         
         if(index>=0){
-            this.platos.set(index, plato);
+            this.platosVendidos.set(index, plato);
             return true;
         }
         else{
@@ -99,14 +99,14 @@ public class Venta {
     public boolean eliminarPlato(long id){
         int index = -1;
         
-        for (int i = 0; i < this.platos.size(); i++){
-            if(id == this.platos.get(i).getId()){
+        for (int i = 0; i < this.platosVendidos.size(); i++){
+            if(id == this.platosVendidos.get(i).getId()){
                 index = i;
             }
         }
         
         if(index>=0){
-            this.platos.remove(index);
+            this.platosVendidos.remove(index);
             return true;
         }
         else{
@@ -115,12 +115,12 @@ public class Venta {
     }
     
     public ArrayList<Plato> obtenerPlatosVendidos(){
-       return this.platos;
+       return this.platosVendidos;
     }
     
     public double calcularValorTotal(){
         double valorTotal = 0.0;
-        for(Plato p: platos){
+        for(Plato p: platosVendidos){
             valorTotal += p.getPrecioVenta();
         }
         return valorTotal;
@@ -128,21 +128,21 @@ public class Venta {
     
     public double calcularValorGanancia(){
         double valorGanancia = 0.0;
-        for(Plato p: platos){
+        for(Plato p: platosVendidos){
             valorGanancia += (p.calcularGanancia() - p.getCostoFabricacion());
         }
         return valorGanancia;
     }
     
     
-    public String mostrarVenta(){
+    public String generarVenta(){
         String venta = "";
         venta += "Codigo Venta: " + this.codigo + "\n";
         venta += "Fecha: " + this.fecha + "\n";
         venta += "Valor Total: " + this.calcularValorTotal() + "\n";
         venta += "Valor Ganancia: " + this.calcularValorGanancia() + "\n";
-        for(int i = 0; i < this.platos.size(); i++){
-            Plato p = this.platos.get(i);
+        for(int i = 0; i < this.platosVendidos.size(); i++){
+            Plato p = this.platosVendidos.get(i);
             venta += "----------------------------\n";
             venta += p.toString();
         }

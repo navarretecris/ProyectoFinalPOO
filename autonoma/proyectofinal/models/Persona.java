@@ -53,6 +53,15 @@ public abstract class Persona {
         this.direccion = direccion;
     }
     
+    ////////////////////////////////////////////////////////////////////////////
+    @Override
+    public String toString(){
+        return "DOCUMENTO IDENTIDAD "+this.documentoIdentidad+":\n"+
+               "  NOMBRE: "+this.nombre+"\n"+
+               "  TELEFONO: "+this.telefono+"\n"+
+               "  DIRECCION: "+this.direccion+"\n\n"; 
+    }
+    
     
     
 }
