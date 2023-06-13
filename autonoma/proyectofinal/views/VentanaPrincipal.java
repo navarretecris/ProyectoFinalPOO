@@ -20,8 +20,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form VentanaPrincipal
      */
-    public VentanaPrincipal() {
+    public VentanaPrincipal(Restaurante restaurante) {
         initComponents();
+        this.restaurente = restaurante;
+        this.setLocationRelativeTo(null);
+        this.lblTitulo.setText(this.restaurente.getNombre());
         try {
             this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/proyectofinal/images/Restaurante.png")).getImage());
         } catch (Exception e) {
@@ -39,7 +42,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btnAgregarPlato = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -55,24 +58,24 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(102, 204, 255));
 
-        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        jLabel1.setText("EL BUEN SABOR");
+        lblTitulo.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblTitulo.setText("NOMBRE DEL RESTAURANTE");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(188, 188, 188))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(91, 91, 91)
+                .addComponent(lblTitulo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jLabel1)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addGap(37, 37, 37)
+                .addComponent(lblTitulo)
+                .addContainerGap(105, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -207,7 +210,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(btnAgregarPlato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                 .addComponent(btnMostrarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51)
                 .addComponent(btnBuscarPlato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -252,12 +255,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarPlatoMouseExited
 
     private void btnAgregarPlatoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarPlatoMouseClicked
-        AgregarPlato ventanaAgregarPlato = new AgregarPlato(this, true);
+        AgregarPlato ventanaAgregarPlato = new AgregarPlato(this, true,this.restaurente);
         ventanaAgregarPlato.setVisible(true);
     }//GEN-LAST:event_btnAgregarPlatoMouseClicked
 
     private void btnBuscarPlatoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarPlatoMouseClicked
-        BuscarPlato ventanaBuscarPlato = new BuscarPlato(this,true);
+        BuscarPlato ventanaBuscarPlato = new BuscarPlato(this,true,this.restaurente);
         ventanaBuscarPlato.setVisible(true);
     }//GEN-LAST:event_btnBuscarPlatoMouseClicked
 
@@ -270,7 +273,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarPlatoMouseExited
 
     private void btnMostrarMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMostrarMenuMouseClicked
-        MostrarMenu ventanaMostrarMenu = new MostrarMenu(this,true);
+        MostrarMenu ventanaMostrarMenu = new MostrarMenu(this,true,this.restaurente);
         ventanaMostrarMenu.setVisible(true);
     }//GEN-LAST:event_btnMostrarMenuMouseClicked
 
@@ -295,7 +298,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel btnAgregarPlato;
     private javax.swing.JPanel btnBuscarPlato;
     private javax.swing.JPanel btnMostrarMenu;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -304,5 +306,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblTitulo;
     // End of variables declaration//GEN-END:variables
 }

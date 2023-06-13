@@ -16,7 +16,8 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args){
         
-        VentanaPrincipal ventana = new VentanaPrincipal();
+        Restaurante restaurante = new Restaurante("EL BUEN SABOR","Elm Street", 8901431);
+        VentanaPrincipal ventana = new VentanaPrincipal(restaurante);
         ventana.setVisible(true);
         
         
